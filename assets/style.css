@@ -1,0 +1,321 @@
+/* ===================================================================
+   A.S.H Paysage & Multiservices — feuille de style (LocWeb, 2026-10-03)
+   Les couleurs viennent du logo : le vert feuille en degrade, et
+   l'anthracite de la maison. Titres en Bricolage Grotesque (franche,
+   un peu artisanale), texte en Manrope.
+   =================================================================== */
+:root {
+  --vert: #4f8a1c;
+  --vert-f: #2f5713;
+  --vert-vif: #8cc63f;
+  --vert-pale: #eef5e3;
+  --anthracite: #24282b;
+  --anthracite-2: #181b1d;
+  --encre: #1d2320;
+  --gris: #5b665e;
+  --fond: #f4f6ef;
+  --trait: #e1e7da;
+  --blanc: #fff;
+  --titre: 'Bricolage Grotesque', 'Arial Black', sans-serif;
+  --texte: 'Manrope', system-ui, sans-serif;
+  --rayon: 16px;
+  --ombre: 0 10px 30px rgba(36, 40, 43, .08);
+  --ombre-forte: 0 22px 54px rgba(36, 40, 43, .16);
+  --cadre: 1180px;
+  --entete: 84px;
+}
+
+*, *::before, *::after { box-sizing: border-box }
+html { scroll-behavior: smooth; scroll-padding-top: calc(var(--entete) + 12px) }
+body { margin: 0; background: var(--blanc); color: var(--encre); font-family: var(--texte); font-size: 17px; line-height: 1.65; -webkit-font-smoothing: antialiased }
+img { max-width: 100%; height: auto; display: block }
+a { color: inherit }
+h1, h2, h3 { font-family: var(--titre); font-weight: 800; line-height: 1.06; margin: 0 0 .5em; letter-spacing: -.02em; text-wrap: balance }
+h1 { font-size: clamp(38px, 5.4vw, 66px) }
+h2 { font-size: clamp(30px, 3.6vw, 44px) }
+h3 { font-size: 22px }
+p { margin: 0 0 1em }
+em { font-style: normal; color: var(--vert) }
+svg { width: 1em; height: 1em; fill: currentColor; flex: none }
+:focus-visible { outline: 3px solid var(--vert-vif); outline-offset: 3px }
+
+.cadre { width: min(100% - 40px, var(--cadre)); margin-inline: auto }
+.etroit { width: min(100% - 40px, 820px) }
+.section { padding: clamp(64px, 8vw, 104px) 0 }
+.section-claire { background: var(--fond) }
+.section-sombre { background: var(--anthracite); color: #fff }
+.surtitre { display: inline-flex; align-items: center; gap: 8px; font-weight: 700; font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: var(--vert); margin-bottom: 14px }
+.surtitre .ic { width: 28px; height: 28px; font-size: 15px }
+.evitement { position: absolute; left: -999px; top: 0; background: var(--vert); color: #fff; padding: 10px 16px; z-index: 100 }
+.evitement:focus { left: 10px; top: 10px }
+
+/* ---------------- boutons ---------------- */
+.bouton {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 52px; padding: 0 24px;
+  border-radius: 999px; border: 2px solid transparent; font-family: var(--texte); font-weight: 700; font-size: 16px;
+  text-decoration: none; cursor: pointer; transition: transform .2s ease, background-color .2s ease, box-shadow .2s ease;
+}
+.bouton svg { font-size: 18px }
+.bouton:hover { transform: translateY(-2px) }
+.bouton-vert { background: var(--vert); color: #fff; box-shadow: 0 8px 22px rgba(79, 138, 28, .3) }
+.bouton-vert:hover { background: var(--vert-f) }
+.bouton-vert-vif { background: var(--vert-vif); color: var(--anthracite-2); box-shadow: 0 8px 24px rgba(140, 198, 63, .35) }
+.bouton-vert-vif:hover { background: #9fd453 }
+.bouton-blanc { background: #fff; color: var(--anthracite) }
+.lien-fleche { display: inline-flex; align-items: center; gap: 8px; color: var(--vert); font-weight: 700; text-decoration: none; font-size: 15px }
+.lien-fleche svg { transition: transform .2s ease }
+.lien-fleche:hover svg { transform: translateX(4px) }
+.ic { display: inline-grid; place-items: center; width: 46px; height: 46px; flex: none; border-radius: 14px; background: var(--vert-pale); color: var(--vert); font-size: 22px }
+
+/* ---------------- en-tete ---------------- */
+.entete { position: sticky; top: 0; z-index: 50; background: rgba(255, 255, 255, .96); backdrop-filter: blur(10px); border-bottom: 1px solid transparent; transition: box-shadow .25s ease, border-color .25s ease }
+.entete[data-ombre] { box-shadow: 0 6px 24px rgba(36, 40, 43, .07); border-color: var(--trait) }
+.entete-in { width: min(100% - 40px, 1240px); margin-inline: auto; height: var(--entete); display: flex; align-items: center; gap: 26px }
+.marque { display: flex; align-items: center; gap: 10px; text-decoration: none; flex: none }
+.marque img { width: 64px; height: auto }
+.marque b { display: block; font-family: var(--titre); font-size: 26px; line-height: 1; letter-spacing: .04em; color: var(--anthracite) }
+.marque small { display: block; font-size: 13px; font-weight: 700; color: var(--gris); margin-top: 3px }
+.marque small em { color: var(--vert-vif) }
+.nav { display: flex; align-items: center; gap: 4px; margin-left: auto }
+.nav > a, .nav-deroule > a { display: block; padding: 10px 13px; text-decoration: none; font-weight: 600; font-size: 15.5px; border-radius: 10px; position: relative }
+.nav a[aria-current="page"] { color: var(--vert) }
+.nav > a:hover, .nav-deroule > a:hover { background: var(--fond) }
+.nav-deroule { position: relative }
+.nav-sous { position: absolute; top: 100%; left: -10px; min-width: 280px; padding: 10px; background: #fff; border: 1px solid var(--trait); border-radius: 14px; box-shadow: var(--ombre-forte); opacity: 0; visibility: hidden; transform: translateY(8px); transition: opacity .2s ease, transform .2s ease, visibility .2s }
+.nav-deroule:hover .nav-sous, .nav-deroule:focus-within .nav-sous { opacity: 1; visibility: visible; transform: none }
+.nav-sous a { display: flex; align-items: center; gap: 12px; padding: 8px 10px; border-radius: 10px; text-decoration: none; font-weight: 600; font-size: 15px }
+.nav-sous a:hover { background: var(--fond); color: var(--vert) }
+.nav-sous .ic { width: 34px; height: 34px; font-size: 17px; border-radius: 10px }
+.entete-tel { display: flex; align-items: center; gap: 8px; text-decoration: none; font-family: var(--titre); font-size: 21px; color: var(--anthracite) }
+.entete-tel svg { color: var(--vert) }
+.entete-cta { min-height: 46px; padding: 0 20px; font-size: 15px }
+.burger { display: none; margin-left: auto; width: 46px; height: 46px; border: 0; background: var(--fond); border-radius: 12px; cursor: pointer; place-content: center; gap: 5px; padding: 0 }
+.burger span { display: block; width: 22px; height: 2px; background: var(--anthracite); transition: transform .25s ease, opacity .25s ease }
+.burger[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg) }
+.burger[aria-expanded="true"] span:nth-child(2) { opacity: 0 }
+.burger[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg) }
+.menu-mobile { border-top: 1px solid var(--trait); padding: 14px 20px 22px; display: grid; gap: 2px; max-height: calc(100vh - var(--entete)); overflow-y: auto }
+.menu-mobile[hidden] { display: none }
+.menu-mobile > a { padding: 12px 4px; text-decoration: none; font-weight: 700; font-size: 18px; border-bottom: 1px solid var(--trait) }
+.menu-mobile .bouton { margin-top: 14px; border: 0; color: #fff }
+.menu-mobile-services { display: grid; gap: 2px; padding: 6px 0 }
+.menu-mobile-services a { display: flex; align-items: center; gap: 10px; padding: 7px 0; text-decoration: none; font-weight: 600; color: var(--gris) }
+.menu-mobile-services .ic { width: 32px; height: 32px; font-size: 16px; border-radius: 10px }
+
+.ariane { background: var(--anthracite); color: rgba(255, 255, 255, .6); font-size: 14px }
+.ariane .cadre { display: flex; flex-wrap: wrap; gap: 6px; padding: 12px 0 0 }
+.ariane a { color: rgba(255, 255, 255, .8); text-decoration: none }
+.ariane a::after { content: '›'; margin-left: 6px; color: rgba(255, 255, 255, .4) }
+.ariane span { color: #fff }
+
+/* ---------------- hero ---------------- */
+.hero { position: relative; min-height: min(82vh, 720px); display: flex; align-items: center; overflow: hidden; color: #fff; isolation: isolate; background: var(--anthracite-2) }
+.hero-fond { position: absolute; inset: 0; z-index: -2; overflow: hidden }
+.hero-fond img { width: 100%; height: 118%; object-fit: cover; object-position: 50% 45%; animation: zoom-lent 14s ease-out both }
+.hero::before { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg, rgba(17, 30, 9, .9) 0%, rgba(17, 30, 9, .72) 40%, rgba(17, 30, 9, .15) 75%), linear-gradient(0deg, rgba(17, 30, 9, .5), rgba(17, 30, 9, 0) 35%) }
+.hero-in { padding: 80px 0 130px }
+.hero h1 { max-width: 13ch; margin-bottom: 18px }
+.hero .surtitre { color: var(--vert-vif) }
+.hero-sous { font-size: 19px; color: rgba(255, 255, 255, .88); max-width: 52ch; margin-bottom: 30px }
+.hero-actions { display: flex; flex-wrap: wrap; gap: 14px }
+@keyframes zoom-lent { from { transform: scale(1.08) } to { transform: scale(1) } }
+.hero-anim { opacity: 0; transform: translateY(18px); animation: monte .8s cubic-bezier(.2, .7, .2, 1) forwards }
+.hero-anim:nth-child(2) { animation-delay: .1s }
+.hero-anim:nth-child(3) { animation-delay: .2s }
+.hero-anim:nth-child(4) { animation-delay: .3s }
+@keyframes monte { to { opacity: 1; transform: none } }
+
+/* ---------------- atouts ---------------- */
+.atouts { position: relative; z-index: 2; margin-top: -60px; background: #fff; border-radius: var(--rayon); box-shadow: var(--ombre-forte); display: grid; grid-template-columns: repeat(4, 1fr) }
+.atouts > div { display: flex; align-items: center; gap: 14px; padding: 22px }
+.atouts > div + div { border-left: 1px solid var(--trait) }
+.atouts p { margin: 0; line-height: 1.3 }
+.atouts b { display: block; font-size: 16px }
+.atouts span { font-size: 14px; color: var(--gris) }
+.tete-service + .cadre .atouts { margin-top: -42px }
+
+.tete-section { margin-bottom: 36px }
+.tete-section h2 { margin: 0; max-width: 22ch }
+.tete-ligne { display: flex; align-items: end; justify-content: space-between; gap: 20px; flex-wrap: wrap }
+.tete-centree { text-align: center; display: flex; flex-direction: column; align-items: center }
+
+/* ---------------- prestations ---------------- */
+.grille-services { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px }
+.carte-service { display: flex; flex-direction: column; background: #fff; border: 1px solid var(--trait); border-radius: var(--rayon); overflow: hidden; text-decoration: none; box-shadow: var(--ombre); transition: transform .3s ease, box-shadow .3s ease }
+.carte-service:hover { transform: translateY(-6px); box-shadow: var(--ombre-forte) }
+.carte-photo { display: block; aspect-ratio: 16 / 10; overflow: hidden; background: var(--fond) }
+.carte-photo img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s ease }
+.carte-service:hover .carte-photo img { transform: scale(1.06) }
+.carte-corps { position: relative; display: flex; flex-direction: column; gap: 6px; padding: 32px 24px 24px; flex: 1 }
+.carte-corps .ic { position: absolute; top: -24px; left: 24px; background: #fff; box-shadow: var(--ombre) }
+.carte-corps b { font-family: var(--titre); font-size: 23px; line-height: 1.1 }
+.carte-corps > span:not(.lien-fleche):not(.ic) { color: var(--gris); font-size: 15.5px; line-height: 1.5 }
+.carte-corps .lien-fleche { margin-top: auto; padding-top: 10px }
+.carte-devis { display: flex; flex-direction: column; justify-content: center; gap: 10px; padding: 32px; border-radius: var(--rayon); text-decoration: none; background: var(--vert-f); color: #fff; transition: transform .3s ease }
+.carte-devis:hover { transform: translateY(-6px) }
+.carte-devis b { font-family: var(--titre); font-size: 30px; line-height: 1.05 }
+.carte-devis span { color: rgba(255, 255, 255, .8) }
+.carte-devis .lien-fleche { color: var(--vert-vif); margin-top: 8px }
+
+/* ---------------- presentation ---------------- */
+.presentation { display: grid; grid-template-columns: 5fr 6fr; gap: clamp(36px, 6vw, 80px); align-items: center }
+.presentation-photo { margin: 0 }
+.presentation-photo figcaption { margin-top: 12px; font-size: 14px; font-weight: 600; color: var(--gris) }
+.presentation-photo img { border-radius: var(--rayon); aspect-ratio: 4 / 5; object-fit: cover; width: 100%; box-shadow: var(--ombre-forte) }
+.presentation-texte > p:not(.surtitre) { color: var(--gris) }
+.liste-coche { list-style: none; padding: 0; margin: 0 0 1.4em; display: grid; gap: 10px }
+.liste-coche li { position: relative; padding-left: 32px }
+.liste-coche li::before { content: ''; position: absolute; left: 0; top: .2em; width: 20px; height: 20px; border-radius: 50%; background: var(--vert) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23fff' d='m9.5 16.2-4-4 1.4-1.4 2.6 2.6 6.6-6.6 1.4 1.4z'/%3E%3C/svg%3E") center / 15px no-repeat }
+
+/* ---------------- realisations ---------------- */
+.grille-realisations { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px 22px }
+.realisation { margin: 0 }
+.realisation-photo { display: block; aspect-ratio: 4 / 3; overflow: hidden; border-radius: 14px; background: var(--fond) }
+.realisation-photo img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s ease }
+.realisation:hover .realisation-photo img { transform: scale(1.05) }
+.realisation figcaption { padding: 12px 2px 0; line-height: 1.35 }
+.realisation figcaption b { display: block; font-size: 16px }
+.realisation figcaption span { font-size: 14px; color: var(--vert); font-weight: 600 }
+
+/* ---------------- etapes ---------------- */
+.section-sombre .surtitre { color: var(--vert-vif) }
+.etapes { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; counter-reset: e }
+.etapes li { counter-increment: e; padding: 30px 26px; border-radius: var(--rayon); background: rgba(255, 255, 255, .05); border: 1px solid rgba(255, 255, 255, .12) }
+.etapes li::before { content: counter(e); display: grid; place-items: center; width: 48px; height: 48px; border-radius: 50%; background: var(--vert-vif); color: var(--anthracite-2); font-family: var(--titre); font-size: 24px; margin-bottom: 16px }
+.etapes b { display: block; font-family: var(--titre); font-size: 22px; margin-bottom: 6px }
+.etapes span { color: rgba(255, 255, 255, .72) }
+
+/* ---------------- contact + devis ---------------- */
+.contact { display: grid; grid-template-columns: 5fr 6fr; gap: clamp(30px, 5vw, 64px); align-items: start }
+.contact-infos { display: grid; gap: 14px }
+.contact-infos h2 { margin-bottom: 4px }
+.contact-tel { display: flex; align-items: center; gap: 16px; padding: 22px; border-radius: var(--rayon); background: var(--vert); color: #fff; text-decoration: none }
+.contact-tel > svg { font-size: 32px }
+.contact-tel small { display: block; font-weight: 600; opacity: .85 }
+.contact-tel b { font-family: var(--titre); font-size: 36px; line-height: 1 }
+.contact-ligne { display: flex; align-items: flex-start; gap: 12px; margin: 0; padding: 15px 16px; background: #fff; border: 1px solid var(--trait); border-radius: 14px; font-weight: 600 }
+.contact-ligne > svg { color: var(--vert); font-size: 21px; margin-top: 2px }
+.contact-horaires ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; flex: 1 }
+.contact-horaires li { display: flex; justify-content: space-between; gap: 12px; font-weight: 500 }
+.contact-horaires b { font-weight: 700 }
+.zone-courte { color: var(--gris); font-size: 15px }
+.zone-courte a { color: var(--vert); font-weight: 700 }
+
+.devis-carte { background: var(--anthracite); color: #fff; border-radius: var(--rayon); padding: 30px; box-shadow: var(--ombre-forte); position: relative; overflow: hidden }
+.devis-carte::after { content: ''; position: absolute; right: -70px; top: -70px; width: 230px; height: 230px; border-radius: 50%; background: radial-gradient(circle, rgba(140, 198, 63, .25), transparent 70%); pointer-events: none }
+.devis h2 { font-size: 30px; margin-bottom: 6px }
+.devis-intro { color: rgba(255, 255, 255, .7); font-size: 15px; margin-bottom: 18px }
+.devis label { display: block; margin-bottom: 12px }
+.devis label span { display: block; font-size: 13px; font-weight: 700; margin-bottom: 5px; color: rgba(255, 255, 255, .8) }
+.devis input, .devis select, .devis textarea { width: 100%; font: inherit; font-size: 16px; color: var(--encre); background: #fff; border: 2px solid transparent; border-radius: 12px; padding: 11px 13px }
+.devis input:focus, .devis select:focus, .devis textarea:focus { outline: none; border-color: var(--vert-vif) }
+.devis textarea { resize: vertical; min-height: 84px }
+.devis .bouton { width: 100%; margin-top: 6px }
+.devis-note { margin: 12px 0 0; padding: 12px 14px; background: rgba(255, 255, 255, .1); border-radius: 10px; font-size: 14.5px }
+
+/* ---------------- FAQ ---------------- */
+.faq { display: grid; gap: 12px }
+.faq details { background: #fff; border: 1px solid var(--trait); border-radius: 14px }
+.faq details[open] { box-shadow: var(--ombre) }
+.faq summary { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 18px 22px; cursor: pointer; list-style: none; font-weight: 700; font-size: 17px }
+.faq summary::-webkit-details-marker { display: none }
+.faq summary i { position: relative; width: 26px; height: 26px; flex: none; border-radius: 50%; background: var(--vert-pale) }
+.faq summary i::before, .faq summary i::after { content: ''; position: absolute; left: 7px; right: 7px; top: 12px; height: 2px; background: var(--vert); transition: transform .25s ease }
+.faq summary i::after { transform: rotate(90deg) }
+.faq details[open] summary i::after { transform: rotate(0) }
+.faq details p { padding: 0 22px 20px; margin: 0; color: var(--gris) }
+
+/* ---------------- bandeau d'appel ---------------- */
+.appel { background: linear-gradient(110deg, var(--vert-f), #3d7019); color: #fff; padding: 56px 0 }
+.appel-in { display: flex; align-items: center; justify-content: space-between; gap: 26px; flex-wrap: wrap }
+.appel h2 { margin-bottom: 6px }
+.appel p { margin: 0; color: rgba(255, 255, 255, .8) }
+.appel-actions { display: flex; flex-wrap: wrap; gap: 12px }
+
+/* ---------------- pages interieures ---------------- */
+.tete-page { background: var(--anthracite); color: #fff; padding: 40px 0 64px }
+.tete-page h1 { max-width: 22ch }
+.tete-page p { color: rgba(255, 255, 255, .75); max-width: 62ch; margin: 0; font-size: 18px }
+.tete-service { background: var(--anthracite); color: #fff; padding: 30px 0 104px; overflow: hidden }
+.tete-service-in { display: grid; grid-template-columns: 6fr 5fr; gap: clamp(30px, 5vw, 64px); align-items: center }
+.tete-service .surtitre { color: var(--vert-vif) }
+.tete-service .surtitre .ic { background: rgba(140, 198, 63, .15); color: var(--vert-vif) }
+.chapo { font-size: 19px; color: rgba(255, 255, 255, .82); max-width: 56ch; margin-bottom: 26px }
+.tete-service-photo { margin: 0 }
+.tete-service-photo img { border-radius: var(--rayon); aspect-ratio: 4 / 3; object-fit: cover; width: 100%; box-shadow: 0 24px 60px rgba(0, 0, 0, .35) }
+.article-service { display: grid; grid-template-columns: minmax(0, 1fr) 360px; gap: clamp(30px, 5vw, 64px); padding: 64px 0 90px }
+.texte-riche h2 { font-size: clamp(27px, 3vw, 34px); margin-top: 1.4em }
+.texte-riche section:first-child h2, .texte-riche > h2:first-child { margin-top: 0 }
+.texte-riche p, .texte-riche li { color: #3d4840 }
+.texte-riche a { color: var(--vert); font-weight: 700 }
+.galerie { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 12px }
+.galerie figure { margin: 0; aspect-ratio: 1; overflow: hidden; border-radius: 12px }
+.galerie img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s ease }
+.galerie figure:hover img { transform: scale(1.06) }
+.cote-collant { position: sticky; top: calc(var(--entete) + 20px); display: grid; gap: 20px }
+.cote-collant .devis h2 { font-size: 26px }
+.cote-services { background: var(--fond); border-radius: var(--rayon); padding: 22px }
+.cote-services h2 { font-size: 21px }
+.cote-services a { display: flex; align-items: center; gap: 12px; padding: 8px 0; text-decoration: none; font-weight: 600; border-top: 1px solid var(--trait) }
+.cote-services a:hover { color: var(--vert) }
+.cote-services .ic { width: 34px; height: 34px; font-size: 17px; border-radius: 10px }
+.communes { list-style: none; padding: 0; margin: 0 0 1.5em; display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px }
+.communes li { display: flex; align-items: center; gap: 8px; padding: 11px 14px; background: var(--fond); border-radius: 12px; font-weight: 600 }
+.communes svg { color: var(--vert) }
+
+/* ---------------- pied ---------------- */
+.pied { background: var(--anthracite-2); color: rgba(255, 255, 255, .7); font-size: 15.5px; padding-top: 64px }
+.pied-haut { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1.1fr; gap: 40px; padding-bottom: 46px }
+.pied-logo { width: 150px; background: #fff; border-radius: 16px; padding: 12px; margin-bottom: 16px }
+.pied-titre { font-family: var(--titre); color: #fff; font-size: 20px; margin-bottom: 14px }
+.pied ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 9px }
+.pied a { text-decoration: none }
+.pied a:hover { color: var(--vert-vif) }
+.pied-horaires li { display: flex; justify-content: space-between; gap: 10px }
+.pied-horaires b { color: #fff; font-weight: 600 }
+.pied .bouton { margin-top: 20px; color: #fff }
+.pied-bas { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; padding: 20px 0 26px; border-top: 1px solid rgba(255, 255, 255, .1); font-size: 14px; color: rgba(255, 255, 255, .5) }
+.barre-mobile { display: none }
+
+.js .reveler { opacity: 0; transform: translateY(26px); transition: opacity .7s ease, transform .7s cubic-bezier(.2, .7, .2, 1) }
+.js .reveler.vu { opacity: 1; transform: none }
+
+/* ---------------- responsive ---------------- */
+@media (max-width: 1060px) {
+  .nav, .entete-cta, .entete-tel { display: none }
+  .burger { display: grid }
+  .atouts { grid-template-columns: 1fr 1fr }
+  .atouts > div:nth-child(3) { border-left: 0 }
+  .atouts > div:nth-child(n + 3) { border-top: 1px solid var(--trait) }
+  .grille-services, .grille-realisations { grid-template-columns: 1fr 1fr }
+  .article-service, .contact { grid-template-columns: 1fr }
+  .cote-collant { position: static }
+  .pied-haut { grid-template-columns: 1fr 1fr }
+}
+@media (max-width: 760px) {
+  :root { --entete: 70px }
+  body { font-size: 16.5px; padding-bottom: 66px }
+  .marque img { width: 52px }
+  .marque b { font-size: 22px }
+  .hero { min-height: 0 }
+  .hero::before { background: linear-gradient(180deg, rgba(17, 30, 9, .45) 0%, rgba(17, 30, 9, .88) 55%, rgba(17, 30, 9, .96) 100%) }
+  .hero-in { padding: 64px 0 104px }
+  .hero-sous br { display: none }
+  .hero-actions .bouton { flex: 1 1 100% }
+  .atouts { grid-template-columns: 1fr; margin-top: -52px }
+  .atouts > div { border-left: 0 !important; padding: 16px 18px }
+  .atouts > div + div { border-top: 1px solid var(--trait) }
+  .grille-services, .etapes, .presentation, .tete-service-in { grid-template-columns: 1fr }
+  .grille-realisations { gap: 20px 14px }
+  .appel-actions, .appel-actions .bouton { width: 100% }
+  .pied-haut { grid-template-columns: 1fr }
+  .devis-carte { padding: 24px 20px }
+  .barre-mobile { display: grid; grid-template-columns: 1fr 1fr; position: fixed; left: 0; right: 0; bottom: 0; z-index: 60; background: var(--anthracite-2); box-shadow: 0 -8px 24px rgba(0, 0, 0, .18); padding-bottom: env(safe-area-inset-bottom) }
+  .barre-mobile.barre-seule { grid-template-columns: 1fr }
+  .barre-mobile a { display: flex; align-items: center; justify-content: center; gap: 9px; min-height: 58px; color: #fff; text-decoration: none; font-weight: 700 }
+  .barre-mobile .barre-devis { background: var(--vert) }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; scroll-behavior: auto !important }
+  .hero-anim, .js .reveler { opacity: 1; transform: none }
+}
